@@ -1,0 +1,16 @@
+stages:
+  - lint
+  - test
+
+lint_shell_script:
+  stage: lint
+  image: koalaman/shellcheck-alpine:v0.6.0-stable
+  script:
+    - shellcheck my_script.sh
+
+test_shell_script:
+    stage: test
+    before_script:
+      - chmod +x my_script.sh
+    script:
+      - ./my_script.sh
